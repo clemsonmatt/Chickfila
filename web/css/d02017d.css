@@ -8902,16 +8902,19 @@ h1, h2, h3, h4, h5 {
 
 
 /* breadcrumb */
-.cfa-breadcrumb {
-    background-color: #fff;
+.breadcrumb {
+    background-color: #fafafa;
     margin-left: 240px;
-    padding: 15px 40px;
+    padding: 10px 40px;
     font-size: 18px;
     color: #4c4c4f;
-    border-top: 2px dotted #eee;
+    border-top: 1px solid #eee;
     border-bottom: 0px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+    margin-bottom: 0px;
+    border-radius: 0;
 }
-.cfa-breadcrumb > a {
+.breadcrumb li a {
     color: #4c4c4f;
 }
 
