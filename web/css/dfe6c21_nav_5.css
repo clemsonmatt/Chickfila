@@ -175,27 +175,26 @@
 
 /* sidebar */
 .sidebar {
-    background-color: #4c4c4f;
+    background-color: #293541;
     border: none;
     box-shadow: none;
 }
 
 #side-menu > li {
     width: 100%;
-    border-bottom: 1px solid #434346;
 }
 #side-menu > li > a {
-    color: #dcdcdf;
+    color: #697581;
     padding: 15px 25px;
     font-size: 1.1em;
     transition: all 0.3s ease 0s;
 }
 #side-menu > li > a:hover,
 #side-menu > li > a:focus {
-    background-color: #404043;
+    background-color: #2e3b47;
 }
 #side-menu > ul > .active {
-    background-color: #d5072f;
+    background-color: #2e3b47;
 }
 
 /* sb-admin-custom */

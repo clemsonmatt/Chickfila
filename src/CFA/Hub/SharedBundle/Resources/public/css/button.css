@@ -1,0 +1,38 @@
+.btn-primary {
+    background-color: #e5173f;
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #d5072f;
+    color: #fff;
+}
+.btn-primary-inverse {
+    background-color: #fff;
+    color: #e5173f;
+    border: 1px solid #e5173f;
+}
+.btn-primary-inverse:hover {
+    background-color: #e5173f;
+    color: #fff;
+    border: 1px solid #d5072f;
+}
+.btn-primary-simple {
+    background-color: inherit;
+    color: #fff;
+    border: 1px solid #fff;
+}
+.btn-primary-simple:hover {
+    background-color: #fff;
+    color: #e5173f;
+}
+.btn-primary-simple .badge {
+    background-color: #fff;
+    color: #e5173f;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+.btn-primary-simple:hover .badge {
+    background-color: #e5173f;
+    color: #fff;
+}

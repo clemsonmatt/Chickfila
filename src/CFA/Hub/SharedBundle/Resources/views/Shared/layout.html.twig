@@ -13,13 +13,15 @@
     {% block stylesheets %}
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         {% stylesheets
-            '@CFAHubSharedBundle/Resources/public/css/bootstrap/bootstrap.css'
+            '@CFAHubSharedBundle/Resources/public/css/bootstrap-paper.css'
             '@CFAHubSharedBundle/Resources/public/css/bootstrap-datepicker/bootstrap-datepicker.css'
             '@CFAHubSharedBundle/Resources/public/css/bootstrap-timepicker/bootstrap-timepicker.css'
             '@CFAHubSharedBundle/Resources/public/css/mainStructure.css'
             '@CFAHubSharedBundle/Resources/public/css/nav.css'
+            '@CFAHubSharedBundle/Resources/public/css/sidebar.css'
             '@CFAHubSharedBundle/Resources/public/css/custom.css'
             '@CFAHubSharedBundle/Resources/public/css/calendar.css'
+            '@CFAHubSharedBundle/Resources/public/css/button.css'
         %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
@@ -53,6 +55,10 @@
                     {{ page_title_content|raw }}
                 {% endblock %}
             {% endembed %}
+
+            <div id="header">
+                {% block page_title %}Page Title{% endblock %}
+            </div>
 
             {% block breadcrumb %}{% endblock %}
 
