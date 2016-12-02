@@ -1,0 +1,350 @@
+/*
+ * Custom css file
+ */
+
+html, body {
+    height: 100%;]
+}
+
+
+/* F5F4F1 */
+
+
+/* colors */
+.wedding {
+    color: #b59b77;
+}
+
+.dark-grey {
+    color: #333333;
+}
+
+.light-grey {
+    color: #999999;
+}
+
+.color-white {
+    color: #ffffff;
+}
+
+.color-green {
+    color: #5cb85c;
+}
+
+.cfa-red {
+    color: #e5173f;
+}
+
+
+.cfa-hr {
+    border-top: 2px dotted #eee;
+}
+
+
+/* custom alerts */
+.alert-cfa {
+    margin-top: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    font-size: 16px;
+}
+
+.alert-cfa-success {
+    color: #468847;
+    border-top: 2px dotted #468847;
+    border-bottom: 2px dotted #468847;
+    border-left: none;
+    border-right: none;
+}
+
+.alert-cfa-info {
+    color: #3498db;
+    border-top: 2px dotted #3498db;
+    border-bottom: 2px dotted #3498db;
+    border-left: none;
+    border-right: none;
+}
+
+.alert-cfa-warning {
+    color: #c79a18;
+    border-top: 2px dotted #c79a18;
+    border-bottom: 2px dotted #c79a18;
+    border-left: none;
+    border-right: none;
+}
+
+.alert-cfa-danger {
+    color: #d93e38;
+    border-top: 2px dotted #d93e38;
+    border-bottom: 2px dotted #d93e38;
+    border-left: none;
+    border-right: none;
+}
+
+
+/* breadcrumb */
+.cfa-breadcrumb {
+    background-color: #fff;
+    margin-left: 240px;
+    padding: 15px 40px;
+    font-size: 18px;
+    color: #4c4c4f;
+    border-top: 2px dotted #eee;
+    border-bottom: 0px;
+}
+.cfa-breadcrumb > a {
+    color: #4c4c4f;
+}
+
+
+/* sidebar */
+/*.sidebar {
+    background-color: #4c4c4f;
+    border-top: 0px;
+}
+
+#side-menu > li > a {
+    color: #9c9c9f;
+    font-size: 16px;
+    padding: 20px;
+}
+#side-menu > li > a:hover,
+#side-menu > li > a:focus {
+    background-color: #404043;
+}
+#side-menu > .active {
+    background-color: #d5072f;
+}*/
+
+
+/* panel */
+.panel-cfa {
+    border-radius: 0px;
+    border: 0px;
+    padding: 5px;
+}
+.panel-cfa-border {
+    border: 1px solid #eee;
+}
+.panel-cfa > .panel-heading {
+    background-color: #fff;
+    color: #e5173f;
+    height: 60px;
+    line-height: 2.2;
+    font-size: 1.4em;
+    font-weight: 500;
+    border-bottom: 2px dotted #eee;
+    margin: 0px -5px 0px -5px;
+    padding: 10px 25px;
+}
+.panel-cfa > .panel-heading > a {
+    color: #e5173f;
+}
+.panel-cfa > .table > tbody > tr:first-child > td,
+.panel-cfa > .table > tbody > tr:first-child > th {
+    border: none;
+}
+.panel-cfa > .table > tbody > tr > td,
+.panel-cfa > .table > tbody > tr > th {
+    border-top: 2px dotted #eee;
+}
+.panel-cfa > .panel-breadcrumb,
+.panel-cfa > .panel-breadcrumb > a {
+    color: #777;
+}
+.panel-cfa > .panel-footer {
+    border-top: 2px dotted #eee;
+    background-color: #fff;
+}
+.panel-body-red {
+    background-color: #e5173f;
+    color: #fff;
+    margin: -5px -15px;
+}
+
+
+/* make tabs look like a panel */
+.tab-panel .tab-pane {
+    background-color: #fff;
+    padding: 15px;
+    padding-top: 30px;
+    margin-top: -20px;
+    border: 1px #ddd solid;
+    border-top: none;
+}
+
+
+/* upload file */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+/* buttons */
+.btn-cfa {
+    background-color: #e5173f;
+    color: #fff;
+}
+.btn-cfa:hover {
+    background-color: #d5072f;
+    color: #fff;
+}
+.btn-cfa-inverse {
+    background-color: #fff;
+    color: #e5173f;
+    border: 1px solid #e5173f;
+}
+.btn-cfa-inverse:hover {
+    background-color: #e5173f;
+    color: #fff;
+    border: 1px solid #d5072f;
+}
+.btn-cfa-clear {
+    background-color: inherit;
+    color: #fff;
+    border: 1px solid #fff;
+}
+.btn-cfa-clear:hover {
+    background-color: #fff;
+    color: #e5173f;
+}
+
+
+/* login screen */
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"]
+{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+/* pointer */
+.pointer {
+  cursor: pointer;
+}
+
+
+/* sub-tabs */
+.tabs-container {
+    margin: 0px 0px -5px -15px;
+}
+
+.tabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.tabs.tabs-inline {
+    *zoom: 1;
+}
+.tabs.tabs-inline:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.tabs.tabs-inline.tabs-left {
+    position: relative;
+    float: left;
+    background: #ECF0F1;
+    width: 150px;
+}
+.tabs.tabs-inline.tabs-left > li:first-child > a {
+    border-top: 0;
+}
+.tabs.tabs-inline.tabs-left > li:last-child > a {
+    border-bottom: 2px dotted #eee;
+}
+.tabs.tabs-inline.tabs-left > li.write > a {
+    margin: 10px;
+    background: #ECF0F1;
+    color: #7F8C8D;
+}
+.tabs.tabs-inline.tabs-left > li.write > a:hover {
+    background: #d21b1b;
+    color: #fff;
+}
+.tabs.tabs-inline.tabs-left > li.active > a {
+    background: #e5173f;
+    color: #fff;
+    margin-right: -1px;
+}
+.tabs.tabs-inline.tabs-left > li.active > a:hover {
+    background: #fff;
+}
+.tabs.tabs-inline.tabs-left > li > a {
+    display: block;
+    padding: 10px 20px;
+    color: #7F8C8D;
+    background: #fff;
+    text-decoration: none;
+    border-top: 2px dotted #eee;
+    transition: all 0.3s ease 0s;
+}
+.tabs.tabs-inline.tabs-left > li > a:hover {
+    background: #ECF0F1;
+    color: #7F8C8D;
+}
+
+.tab-content {
+    background-color: #fff;
+}
+.tab-content.padding {
+    padding: 20px;
+}
+.tab-content.tab-content-inline {
+    border-left: 2px dotted #eee;
+    margin-left: 150px;
+    min-height: 400px;
+}
+.tab-content.tab-content-inline.tab-content-bottom {
+    border-left: 0;
+    margin-left: 0;
+}
+.tab-content.tab-content-inline:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+

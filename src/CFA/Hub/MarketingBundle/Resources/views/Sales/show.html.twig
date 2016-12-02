@@ -1,0 +1,253 @@
+{% extends 'CFAHubSharedBundle:Shared:layout.html.twig' %}
+
+{% block page_title %}
+    Marketing
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="cfa-breadcrumb">
+        <div class="pull-right">
+            {#<a href="{{ path('cfa_hub_marketing_sales_remove', {'sale': sale.id}) }}" class="btn btn-sm btn-cfa">#}
+            <a role="button" tabindex="0" class="btn btn-sm btn-cfa" data-placement="left" data-toggle="popover" data-trigger="focus" data-content="Are you sure you want to remove this sale?<br><br><a href='{{ path('cfa_hub_marketing_sales_remove', {'sale': sale.id}) }}' class='btn btn-sm btn-cfa'>Yes, Remove</a><button class='btn btn-sm btn-default pull-right'>Cancel</button>" title="Remove Sale">
+                {{ icon('remove') }}
+                Remove
+            </a>
+        </div>
+
+        <a href="{{ path('cfa_hub_marketing_index') }}">
+            Marketing
+        </a>
+        &raquo;
+        <a href="{{ path('cfa_hub_marketing_sales_index') }}">
+            Sales
+        </a>
+        &raquo;
+        Manage Sale
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-8">
+        {# add an order to a sale #}
+        <div class="panel panel-cfa">
+            <div class="panel-heading">
+                Add Product
+            </div>
+            <div class="panel-body">
+                <form action="{{ path('cfa_hub_marketing_sales_add_to_sale', {'sale': sale.id}) }}" method="post" id="js-add-product-form">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ form_row(order_form.product, {'attr': {'class': 'js-product-input'}}) }}
+                        </div>
+                        <div class="col-md-2">
+                            {{ form_row(order_form.qty, {'attr': {'class': 'js-qty-input'}}) }}
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Price</label>
+                                <div id="js-product-price" style="padding: 6px 10px; border: 2px dotted #eee; border-radius: 4px;">
+                                    $0.00
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Total</label>
+                                <div id="js-product-total" style="padding: 6px 10px; border: 2px dotted #eee; border-radius: 4px;">
+                                    $0.00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_row(order_form.specialRequest) }}
+                    <button type="submit" class="btn btn-cfa pull-right">
+                        {{ icon('plus') }}
+                        Add to order
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        {# table of orders in sale #}
+        <div class="panel panel-cfa">
+            <div class="panel-heading">
+                <div class="pull-right" id="js-sale-total">
+                    ${{ sale.total|number_format(2) }}
+                </div>
+                Order
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                        <th colspan="2">Comments</th>
+                    </thead>
+                    <tbody id="js-order-table">
+                        {% for order in sale.orders %}
+                            <tr>
+                                <td>{{ order.product }}</td>
+                                <td>${{ order.product.price|number_format(2) }}</td>
+                                <td>{{ order.qty }}</td>
+                                <td>${{ (order.product.price * order.qty)|number_format(2) }}</td>
+                                <td>{{ order.specialRequest|default('&mdash;')|raw }}</td>
+                                <td style="width: 1%;">
+                                    <a href="{{ path('cfa_hub_marketing_sales_remove_from_sale', {'sale': sale.id, 'order': order.id}) }}" class="btn btn-cfa btn-xs">
+                                        {{ icon('remove') }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr id="js-no-product-row">
+                                <td colspan="5">
+                                    {{ icon('ban') }}
+                                    None
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        {# customer info #}
+        <div class="panel panel-cfa">
+            <div class="panel-heading">
+                <div class="btn-group pull-right">
+                    {% if sale.customer %}
+                        <a href="{{ path('cfa_hub_marketing_customer_show', {'customer': sale.customer.id}) }}" class="btn btn-default">
+                            {{ icon('user') }}
+                            View Profile
+                        </a>
+                    {% endif %}
+                </div>
+                Customer
+            </div>
+            <div class="panel-body">
+                <form action="{{ path('cfa_hub_marketing_sales_customer_add', {'sale': sale.id}) }}" method="post">
+                    {{ form_row(customer_form.firstName) }}
+                    {{ form_row(customer_form.lastName) }}
+                    {{ form_row(customer_form.companyName) }}
+                    {{ form_row(customer_form.email) }}
+                    {{ form_row(customer_form.phone) }}
+                    <button type="submit" class="btn btn-cfa pull-right">
+                        {{ icon('check') }}
+                        Save
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        {# sale details #}
+        <div class="panel panel-cfa">
+            <div class="panel-heading">
+                Sale Details
+            </div>
+            <div class="panel-body">
+                <form action="{{ path('cfa_hub_marketing_sales_sale_details', {'sale': sale.id}) }}" method="post">
+                    {% if sale.pickupDate %}
+                        {{ form_row(sale_form.pickupDate, {'value': sale.pickupDate|date('m/d/Y')}) }}
+                    {% else %}
+                        {{ form_row(sale_form.pickupDate) }}
+                    {% endif %}
+
+                    {{ form_row(sale_form.pickupTime, {'value': sale.pickupTime|date('h:i A')}) }}
+                    {{ form_row(sale_form.comments, {'value': sale.comments}) }}
+                    <button type="submit" class="btn btn-cfa pull-right">
+                        {{ icon('check') }}
+                        Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function(){
+            $('.js-product-input').on('change', function(){
+                $.ajax({
+                    type: "post",
+                    url: "/hub/marketing/product/" + $('.js-product-input option:selected').val() + "/get-product-details"
+                })
+                .done(function(data){
+                    Order.updateProductDetails(data.data);
+                });
+            });
+
+            $('.js-qty-input').on('change', function(){
+                Order.updateProductDetailsForQty($(this).val());
+            });
+
+            $('#js-add-product-form').on('submit', function(e){
+                e.preventDefault();
+
+                // var inputsOk = Course.checkInputs();
+
+                // if (inputsOk) {
+                    var data = $(this).serialize();
+                    console.log(data);
+
+                    // Course.clearInputs();
+
+                    $.ajax({
+                        type: $(this).attr('method'),
+                        url: $(this).attr('action'),
+                        data: data
+                    })
+                    .done(function(data){
+                        Order.addToTable(data.data);
+                    });
+                // }
+            });
+
+            var Order = {
+                addToTable: function(data){
+                    /* remove "none" row if there are no products */
+                    $('#js-no-product-row').remove();
+
+                    /* add tr to table body */
+                    var tr = "<tr>"
+                        + "<td>" + data['productName'] + "</td>"
+                        + "<td>$" + parseFloat(data['productPrice']).toFixed(2) + "</td>"
+                        + "<td>" + data['qty'] + "</td>"
+                        + "<td>$" + parseFloat(data['total']).toFixed(2) + "</td>"
+                        + "<td>" + (data['comments'] == null ? '\u2014' : data['comments']) + "</td>"
+                        + "<td style='width: 1%;'>"
+                            + '<a href="' + data['removeOrderUrl'] + '" class="btn btn-xs btn-cfa">'
+                                + '<i class="fa fa-remove"></i>'
+                            + '</a>'
+                        + "</td>"
+                    + "</tr>";
+
+                    $('#js-order-table').append(tr);
+
+                    /* update total on panel-heading */
+                    var saleTotalElement = $('#js-sale-total');
+                    var currentTotal     = saleTotalElement.text();
+                    currentTotal         = currentTotal.replace('$', '');
+
+                    saleTotalElement.text('$' + (parseFloat(currentTotal) + parseFloat(data['total'])).toFixed(2));
+                },
+
+                updateProductDetails: function(data){
+                    $('#js-product-price').text('$' + data['price'].toFixed(2));
+                    $('#js-product-total').text('$' + ($('.js-qty-input').val() * data['price']).toFixed(2));
+                },
+
+                updateProductDetailsForQty: function(qty){
+                    var price = $('#js-product-price').text();
+                    price     = price.replace("$", "");
+
+                    $('#js-product-total').text('$' + (parseInt(qty) * parseFloat(price)).toFixed(2));
+                }
+            };
+        });
+    </script>
+{% endblock %}
