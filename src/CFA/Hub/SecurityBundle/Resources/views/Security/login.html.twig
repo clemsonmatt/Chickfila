@@ -1,0 +1,66 @@
+{% extends 'CFAHubSecurityBundle:Security:layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <div style="margin-top: 5%;">
+            <!-- login -->
+            <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+                <div style="padding: 15px;">
+                    <center>
+                        <img src="{{ asset('bundles/cfahubshared/images/Chick-fil-A_logo.png') }}" style="max-width: 100%;">
+                    </center>
+                </div>
+                <form class="form-signin" action="login_check" method="post">
+                    {% if error %}
+                        <div class="alert-cfa alert-cfa-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span style="color: #b91e18; margin-right: 20px; text-shadow: none;">&times;</span>
+                            </button>
+                            {{ icon('exclamation-triangle') }}
+                            {{ error.message }}
+                        </div>
+                    {% else %}
+                        <div style="margin-top: 10px;"></div>
+                    {% endif %}
+
+                    <input type="text" class="form-control input-sm" name="_username" value="{{ username }}" placeholder="Username" />
+
+                    <input type="password" class="form-control input-sm" name="_password" placeholder="Password" />
+
+                    <button type="submit" class="btn btn-cfa-clear btn-block btn-lg" style="height: 50px;">
+                        {{ icon('sign-in') }}
+                        Login
+                    </button>
+                </form>
+                <br>
+                <!-- forgot password -->
+                <p class="cfa-red" style="margin-top: 30px; display: none;">
+                    <input class="" id="forgot-password" type="checkbox"> &nbsp; Forgot Password?
+                </p>
+                <div style="display: none;" id="reset-password">
+                    <div class="form-horizontal">
+                        <form action="#" method="post">
+                            <!-- username -->
+                            <div class="form-group">
+                                <div class="col-lg-3 control-label cfa-red">
+                                    Username
+                                </div>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" name="_username" value="{{ username }}" />
+                                </div>
+                            </div>
+                            <!-- submit btn -->
+                            <div class="form-group">
+                                <div class="col-lg-3 control-label cfa-red">
+                                </div>
+                                <div class="col-lg-8">
+                                    <button type="submit" class="btn btn-default">Reset Password</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

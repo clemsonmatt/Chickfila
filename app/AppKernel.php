@@ -24,8 +24,11 @@ class AppKernel extends Kernel
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
 
             new CFA\LandingBundle\CFALandingBundle(),
-            new CFA\Hub\PeopleBundle\CFAHubPeopleBundle(),
             new CFA\EventRegisterBundle\CFAEventRegisterBundle(),
+            new CFA\Hub\MarketingBundle\CFAHubMarketingBundle(),
+            new CFA\Hub\PeopleBundle\CFAHubPeopleBundle(),
+            new CFA\Hub\SecurityBundle\CFAHubSecurityBundle(),
+            new CFA\Hub\SharedBundle\CFAHubSharedBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
