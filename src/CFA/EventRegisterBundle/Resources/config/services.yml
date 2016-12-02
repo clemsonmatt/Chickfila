@@ -1,0 +1,4 @@
+services:
+#    cfa_event_register.example:
+#        class: CFA\EventRegisterBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
